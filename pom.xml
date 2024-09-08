@@ -20,6 +20,7 @@
         <module>rest-example</module>
         <module>app-store-example</module>
         <module>mjee-parent-pom</module>
+        <module>remote-ejb-pom</module>
     </modules>
 
     <properties>

@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>zemian</groupId>
-        <artifactId>mjee-parent-pom</artifactId>
+        <artifactId>remote-ejb-pom</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>mjee-ejb-example</artifactId>
-    <packaging>ejb</packaging>
+
+    <artifactId>remote-client-example</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,31 +18,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-ejb-plugin</artifactId>
-                <configuration>
-                    <ejbVersion>3.1</ejbVersion>
-                </configuration>
-            </plugin>
-        </plugins>
-        <finalName>mjee-ejb-example</finalName>
-    </build>
-
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>zemian</groupId>
+            <artifactId>remote-server-example</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb-client</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>openejb-client</artifactId>
+            <version>7.0.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>zemian</groupId>
-            <artifactId>mjee-domain-example</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>jar</type>
-        </dependency>
     </dependencies>
+
 </project>
