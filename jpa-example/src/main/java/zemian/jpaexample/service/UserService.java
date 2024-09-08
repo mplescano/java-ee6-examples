@@ -1,6 +1,7 @@
 package zemian.jpaexample.service;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -28,13 +29,9 @@ public class UserService {
     }
     
     public void encryptPasswordAndSaveUser(User user, String plainPassword) {
-        try {
-            byte[] hashedPassword = encrypt.encrypt(plainPassword.getBytes("UTF-8"));
-            user.setPassword(new String(hashedPassword, "UTF-8"));
-            userDao.save(user);
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("Failed to save and encrypt user with password.", e);
-        }
+        byte[] hashedPassword = encrypt.encrypt(plainPassword.getBytes(StandardCharsets.UTF_8));
+        user.setPassword(new String(hashedPassword, StandardCharsets.UTF_8));
+        userDao.save(user);
     }
 
     public List<User> findMostActiveUsers() {
